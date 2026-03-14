@@ -1,0 +1,33 @@
+name: traefik
+services:
+  traefik:
+    image: traefik:v3.6
+    container_name: traefik
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "80:80"
+      - "443:443"
+      # Public entrypoint ports:
+      # These ports are ready to be forwarded from the internet (for example, by a router),
+      # but exposing them here does not automatically make them publicly reachable.
+      # This entrypoint uses the `cloudflare-ips-allowlist` middleware, which allows
+      # requests only from the Cloudflare IP ranges listed at https://www.cloudflare.com/ips/
+      # - "8080:8080"
+      # - "8443:8443"
+    environment:
+      DOMAIN_NAME: ${DOMAIN_NAME:?error}
+      CF_DNS_API_TOKEN: ${CF_DNS_API_TOKEN:?error}
+    env_file: .env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /etc/localtime:/etc/localtime:ro
+      - ./configs/traefik.yml:/traefik.yml:ro
+      - ./configs/dynamic:/dynamic:ro
+      - ./certs/acme.json:/certs/acme.json
+    networks:
+      - reverse-proxy
+networks:
+  reverse-proxy:
+    external: true

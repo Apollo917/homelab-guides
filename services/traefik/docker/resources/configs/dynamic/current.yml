@@ -1,0 +1,56 @@
+# Dynamic routes and service definitions for targets that cannot be configured
+# through Docker labels, such as external or non-containerized services.
+
+http:
+  routers:
+
+    # Traefik dashboard config
+
+    traefik:
+      service: api@internal
+      entryPoints:
+        - private-https
+      rule: Host(`traefik.{{ env "DOMAIN_NAME" }}`)
+      middlewares:
+        - dashboard-auth
+        - sslheader
+        - local-ips-allowlist
+      tls:
+        certresolver: cloudflare
+
+    # Example service routes
+
+    proxmox-node-one:
+      service: proxmox-node-one
+      entryPoints:
+        - private-https
+      rule: Host(`node-one.{{ env "DOMAIN_NAME" }}`)
+      middlewares:
+        - default-headers
+        - local-ips-allowlist
+      tls:
+        certresolver: cloudflare
+
+    exporter-node-one:
+      service: exporter-node-one
+      entryPoints:
+        - private-https
+      rule: Host(`node-one.exporter.{{ env "DOMAIN_NAME" }}`)
+      middlewares:
+        - local-ips-allowlist
+      tls:
+        certresolver: cloudflare
+
+  # Example service definition
+  services:
+
+    proxmox-node-one:
+      loadBalancer:
+        servers:
+          - url: https://192.168.0.100:8006
+        passHostHeader: true
+
+    exporter-node-one:
+      loadBalancer:
+        servers:
+          - url: http://192.168.0.100:9100

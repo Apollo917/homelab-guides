@@ -1,0 +1,49 @@
+http:
+  middlewares:
+    dashboard-auth:
+      basicAuth:
+        users:
+          - <LOGIN_PASSWORD>
+    sslheader:
+      headers:
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+    # Proxmox Virtual Environment specific middleware
+    default-headers:
+      headers:
+        frameDeny: true
+        browserXssFilter: true
+        contentTypeNosniff: true
+        forceSTSHeader: true
+        stsIncludeSubdomains: true
+        stsPreload: true
+        stsSeconds: 15552000
+        customFrameOptionsValue: SAMEORIGIN
+        customRequestHeaders:
+          X-Forwarded-Proto: https
+    local-ips-allowlist:
+      IPAllowList:
+        sourceRange:
+          # Correct LAN subnet masks could be found at your host and router configs
+          - 10.0.0.0/8
+          - 172.16.0.0/12
+          - 192.168.0.0/16
+    cloudflare-ips-allowlist:
+      IPAllowList:
+        sourceRange:
+          # Check out the following Cloudflare IP Ranges page for up-to-date IP address ranges: https://www.cloudflare.com/ips/
+          - 173.245.48.0/20
+          - 103.21.244.0/22
+          - 103.22.200.0/22
+          - 103.31.4.0/22
+          - 141.101.64.0/18
+          - 108.162.192.0/18
+          - 190.93.240.0/20
+          - 188.114.96.0/20
+          - 197.234.240.0/22
+          - 198.41.128.0/17
+          - 162.158.0.0/15
+          - 104.16.0.0/13
+          - 104.24.0.0/14
+          - 172.64.0.0/13
+          - 131.0.72.0/22

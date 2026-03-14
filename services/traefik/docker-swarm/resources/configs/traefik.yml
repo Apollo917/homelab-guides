@@ -1,0 +1,76 @@
+global:
+  sendAnonymousUsage: false
+
+api:
+  dashboard: true
+  debug: false
+  insecure: false
+
+entryPoints:
+  private-http:
+    address: :80
+    http:
+      redirections:
+        entryPoint:
+          to: private-https
+          scheme: https
+  private-https:
+    address: :443
+    http:
+      middlewares:
+        - local-ips-allowlist@file
+  # No public access is allowed by default, but you can uncomment the following lines 
+  # to enable it with a Cloudflare IP allowlist and SSL redirection
+  # public-http:
+  #   address: :8080
+  #   http:
+  #     redirections:
+  #       entryPoint:
+  #         to: public-https
+  #         scheme: https
+  # public-https:
+  #   address: :8443
+  #   http:
+  #     middlewares:
+  #       - cloudflare-ips-allowlist@file
+
+serversTransport:
+  # Allow HTTP without TLS for Traefik–service communication.
+  insecureSkipVerify: true
+
+providers:
+  docker:
+    endpoint: unix:///var/run/docker.sock
+    exposedByDefault: false
+  file:
+    directory: /dynamic
+    watch: true
+
+certificatesResolvers:
+  cloudflare:
+    acme:
+      email: <CLOUDFLARE_ACCOUNT_EMAIL_ADDRESS>
+      storage: /certs/acme.json
+
+      # Use the non-staging CA server when you are sure that your configurations are correct.
+      # You may be banned for making too many requests to the production endpoint.
+      #caServer: https://acme-v02.api.letsencrypt.org/directory
+      caServer: https://acme-staging-v02.api.letsencrypt.org/directory
+
+      dnsChallenge:
+        provider: cloudflare
+        resolvers:
+          - 1.1.1.1:53
+          - 1.0.0.1:53
+        # Uncomment the next parameter if you have issues getting certificates through Cloudflare.
+        # Setting this flag to true disables the need to wait for TXT record propagation
+        # to all authoritative name servers.
+        # disablePropagationCheck: true
+
+        # Uncomment along with disablePropagationCheck if needed to ensure the
+        # TXT record is ready before verification is attempted
+        # delayBeforeCheck: 60s
+
+# Traefik will write logs to stdout by default
+log:
+  level: WARN
