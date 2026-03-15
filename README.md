@@ -5,6 +5,13 @@ A collection of practical homelab setup guides for self-hosted services, operati
 This repository contains processed materials based on video tutorials and articles, organized into written guides that
 are easier to follow, reuse, and reference later.
 
+⚠️ **Repository guides are based on my own learning and experience while building and maintaining a homelab. I
+am not an expert, so some guides may contain mistakes, imperfections, or better approaches than the ones documented
+here**
+
+💡 **It is recommended to review all service files before starting up a service, as they may contain useful
+comments on configuration parameters and other details**
+
 ## Repository structure
 
 - [Services setup guides](./services/README.md)
@@ -39,6 +46,3 @@ Instead of jumping between videos, articles, bookmarks, and scattered notes, thi
 - Guides may cover multiple installation approaches depending on the service
 - Some setups may use containers, while others may run directly on the host system
 - Resource links and references are included when they help explain or support the guide
-- ⚠️ **Repository guides are based on my own learning and experience while building and maintaining a homelab. I
-  am not an expert, so some guides may contain mistakes, imperfections, or better approaches than the ones documented
-  here**

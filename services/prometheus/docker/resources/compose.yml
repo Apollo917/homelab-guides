@@ -13,7 +13,7 @@ services:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
       - ./data:/prometheus
     networks:
-      - traefik # Same network as for Traefik
+      - reverse-proxy
     labels:
       # Traefik integration labels - start
       - "traefik.enable=true"
@@ -21,8 +21,8 @@ services:
       - "traefik.http.routers.prometheus-secure.service=prometheus"
       - "traefik.http.routers.prometheus-secure.tls=true"
       - "traefik.http.routers.prometheus-secure.entrypoints=private-https"
-      - "traefik.http.routers.prometheus-secure.rule=Host(`${SERVICE_URL:?error}`)" # e.g. prometheus.example.com
+      - "traefik.http.routers.prometheus-secure.rule=Host(`prometheus.${DOMAIN_NAME:?error}`)"
       # Traefik integration labels - end
 networks:
-  traefik:
+  reverse-proxy:
     external: true
