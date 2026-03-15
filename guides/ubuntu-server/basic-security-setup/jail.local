@@ -1,0 +1,45 @@
+[DEFAULT]
+
+# IPs that will never be banned — localhost is whitelisted by default; add your own IP or subnet to avoid locking yourself out
+# Multiple entries are space-separated, e.g.: ignoreip = 127.0.0.1/8 ::1 192.168.1.0/24 192.168.1.100
+ignoreip = 127.0.0.1/8 ::1
+
+# Whether to allow IPv6 bans — "auto" detects support automatically
+allowipv6 = auto
+
+# How long an IP remains banned after too many failures
+bantime = 6h
+
+# Time window in which Fail2ban counts failed attempts
+findtime = 10m
+
+# How many failed attempts are allowed before banning the IP
+maxretry = 5
+
+# Firewall backend Fail2ban uses to apply bans (UFW in this case)
+banaction = ufw
+
+# Chooses the best log-reading method automatically (recommended)
+backend = auto
+
+[sshd]
+# Enable SSH protection
+enabled = true
+
+[recidive]
+# Enable jail that bans repeat offenders across all jails
+enabled = true
+
+# Path to Fail2ban's own log, required for recidive jail to function
+# This file is written by default on Ubuntu, but only if logtarget in fail2ban.conf points to it (default: /var/log/fail2ban.log)
+# If Fail2ban is configured to log to journald only, this file will not exist and the recidive jail will silently do nothing
+logpath = /var/log/fail2ban.log
+
+# How long a repeat offender gets banned
+bantime = 7d
+
+# Time window in which repeated bans count toward recidive
+findtime = 1d
+
+# Number of bans before triggering recidive jail
+maxretry = 3

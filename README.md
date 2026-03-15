@@ -14,6 +14,7 @@ comments on configuration parameters and other details**
 
 ## Repository structure
 
+- [Guides](./guides/README.md)
 - [Services setup guides](./services/README.md)
 
 ## Purpose
