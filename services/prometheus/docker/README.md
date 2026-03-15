@@ -1,7 +1,7 @@
 # Prometheus Docker Setup
 
 - This guide assumes:
-    - The reverse proxy network is already created
+    - The reverse proxy network (**reverse-proxy**) is already created
     - [Traefik](../../traefik/README.md) is already running, as Prometheus is configured to use it as a reverse
       proxy
     - You own the base directory for all Docker-related files. It could be e.g. `~/docker/<service_name>`
@@ -17,10 +17,11 @@
     - Prometheus image version, [prometheus.yml](./resources/config/prometheus.yml) scrape config, etc.
     - **Note:** the current [prometheus.yml](./resources/config/prometheus.yml) config uses
       the [DNS discovery approach](https://prometheus.io/docs/prometheus/latest/configuration/configuration/#dns_sd_config);
-      adjust it to your needs with other [...
-      _sd_...](https://prometheus.io/docs/prometheus/latest/configuration/configuration/) configs
+      adjust it to your needs with
+      other [service discovery methods](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)
+      configs
 6. Navigate to the Prometheus root directory and launch the Prometheus service
     - `docker compose up -d`
 7. Verify the deployment
     - Check the service is running: `docker ps`
-    - Open `<SERVICE_URL>` in your browser
+    - Open `https://prometheus.<DOMAIN_NAME>` in your browser
