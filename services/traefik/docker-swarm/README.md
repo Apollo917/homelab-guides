@@ -31,7 +31,7 @@
       check https://www.cloudflare.com/ips/ periodically
     - etc.
 10. Generate and set password for Basic Auth
-    - `htpasswd -nB <username>`
+    - `htpasswd -nB <USERNAME>`
     - Replace `<LOGIN_PASSWORD>` with the generated value in
       the [default dynamic config](./resources/configs/dynamic/_default.yml) file
 11. Set the correct permissions for **acme.json** (Let's Encrypt requires this file to have restricted permissions —
