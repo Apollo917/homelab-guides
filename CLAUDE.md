@@ -23,9 +23,9 @@ When adding or editing any file, check for:
   templates and prose.
 - **No API tokens, passwords, or secrets** — `.env` files must be templates with empty values or `<PLACEHOLDER>` style
   markers.
-- **No specific private IP addresses** — `10.0.0.0/8`, `172.16.0.0/12`, `192.168.0.0/16` CIDR ranges are fine in
-  allowlists, but specific host addresses like `192.168.0.100` should be replaced with a placeholder (e.g.,
-  `<NODE_IP>`).
+- **No public IP addresses** — private RFC 1918 addresses (`10.x.x.x`, `172.16–31.x.x`, `192.168.x.x`) are allowed,
+  both as CIDR ranges and specific host addresses. Public (routable) IP addresses must never appear and should be
+  replaced with a placeholder (e.g., `<SERVER_IP>`).
 - `acme.json` files must remain empty (0 bytes) — they are generated at runtime and must never be committed with
   content.
 
