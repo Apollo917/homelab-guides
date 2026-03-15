@@ -1,0 +1,28 @@
+services:
+  prometheus:
+    image: prom/prometheus:v3.9.1
+    user: <UID>:<GID>
+    command: "--config.file=/etc/prometheus/prometheus.yml --storage.tsdb.retention.time=15d"
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./data:/prometheus
+    networks:
+      - reverse-proxy
+    labels:
+      # Traefik integration labels - start
+      - "traefik.enable=true"
+      - "traefik.http.services.prometheus.loadBalancer.server.port=9090"
+      - "traefik.http.routers.prometheus.service=prometheus"
+      - "traefik.http.routers.prometheus.tls.certresolver=cloudflare"
+      - "traefik.http.routers.prometheus.entrypoints=private-https"
+      - "traefik.http.routers.prometheus.rule=Host(`prometheus.<DOMAIN_NAME>`)"
+      # Traefik integration labels - end
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.labels.name == <NODE_NAME> # Any label you wish
+networks:
+  reverse-proxy:
+    external: true
