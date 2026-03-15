@@ -14,14 +14,14 @@
     - `mkdir traefik`
 8. Move the contents of the [resources](./resources) directory into the Traefik root directory
 9. Adjust the Traefik configuration if needed
-    - Traefik Docker image version, etc.
+    - Traefik Docker image version, [traefik configs](./resources/configs), etc.
 10. Generate and set password for Basic Auth
     - `htpasswd -nB <username>`
     - Replace `<LOGIN_PASSWORD>` with the generated value in
       the [default dynamic config](./resources/configs/dynamic/_default.yml) file
 11. Set the correct permissions for **acme.json**
     - `chmod 600 ~/docker/traefik/certs/acme.json`
-12. Navigate to the Traefik root Docker directory and launch Traefik
+12. Navigate to the Traefik root Docker directory and launch Traefik service
     - `docker stack deploy -c compose.yml traefik`
 13. Check Traefik Docker service logs
     - `docker service logs traefik_traefik`

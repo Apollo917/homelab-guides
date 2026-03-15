@@ -1,0 +1,28 @@
+name: "prometheus"
+services:
+  prometheus:
+    image: prom/prometheus:v3.9.1
+    container_name: prometheus
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    user: ${UID:?error}:${GID:?error}
+    command: "--config.file=/etc/prometheus/prometheus.yml --storage.tsdb.retention.time=${TSDB_RETENTION_TIME:-15d}"
+    env_file: .env
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+      - ./data:/prometheus
+    networks:
+      - traefik # Same network as for Traefik
+    labels:
+      # Traefik integration labels - start
+      - "traefik.enable=true"
+      - "traefik.http.services.prometheus.loadBalancer.server.port=9090"
+      - "traefik.http.routers.prometheus-secure.service=prometheus"
+      - "traefik.http.routers.prometheus-secure.tls=true"
+      - "traefik.http.routers.prometheus-secure.entrypoints=private-https"
+      - "traefik.http.routers.prometheus-secure.rule=Host(`${SERVICE_URL:?error}`)" # e.g. prometheus.example.com
+      # Traefik integration labels - end
+networks:
+  traefik:
+    external: true
