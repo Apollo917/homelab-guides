@@ -12,6 +12,7 @@ and other topics.
 
 - Config file comments are intentional — they explain parameters and warn about things that change over time (e.g.,
   Cloudflare IP ranges). Preserve them.
+- List items must not end with a period.
 
 ## Review Checklist
 
