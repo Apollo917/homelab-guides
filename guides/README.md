@@ -7,4 +7,5 @@ dedicated section.
 
 - [Static IP Address Configuration](ubuntu-server-24-04/static-ip-address-configuration)
 - [Basic Security Setup](ubuntu-server-24-04/basic-security-setup)
-- [Docker Installation](ubuntu-server-24-04/docker-installation.md)
+- [Docker Installation](ubuntu-server-24-04/docker-installation)
+- [Node Exporter Installation](ubuntu-server-24-04/node-exporter-installation)

@@ -8,6 +8,10 @@ A collection of practical homelab setup guides compiled from open-source materia
 Guides cover containerized service setups (Docker / Docker Swarm) and will expand to OS-level services, Proxmox setup,
 and other topics.
 
+The target audience has basic Linux experience — familiarity with the terminal, common commands, and file system
+structure can be assumed. Guides do not need to explain foundational concepts like what `sudo` does or how to use a
+text editor.
+
 ## Conventions
 
 - Config file comments are intentional — they explain parameters and warn about things that change over time (e.g.,
