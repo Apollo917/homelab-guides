@@ -1,4 +1,4 @@
-# Ubuntu Server 24.04 Node-Exporter Service Installation
+# Ubuntu Server 24.04 – Node-Exporter Service Installation
 
 [Node Exporter](https://github.com/prometheus/node_exporter) is a Prometheus exporter for hardware and OS-level metrics
 on Linux hosts. It exposes a `/metrics` HTTP endpoint that Prometheus scrapes to collect data such as CPU usage, memory,

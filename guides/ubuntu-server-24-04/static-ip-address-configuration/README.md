@@ -1,4 +1,4 @@
-# Ubuntu Server 24.04 Static IP Address Configuration
+# Ubuntu Server 24.04 – Static IP Address Configuration
 
 ## Steps
 
