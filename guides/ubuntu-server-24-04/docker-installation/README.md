@@ -1,4 +1,4 @@
-# Ubuntu Server 24.04 Docker Installation
+# Ubuntu Server 24.04 – Docker Installation
 
 ## Installation
 
