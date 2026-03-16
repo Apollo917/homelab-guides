@@ -1,0 +1,15 @@
+network:
+  version: 2
+  renderer: networkd  # use the backend from step 1: networkd or NetworkManager
+  ethernets:
+    <INTERFACE_NAME>:  # replace with your interface name from step 2
+      dhcp4: no
+      addresses:
+        - 192.168.0.100/24  # your desired static IP with subnet mask
+      routes:
+        - to: default
+          via: 192.168.0.1  # your gateway IP
+      nameservers:
+        addresses:
+          - 1.1.1.1
+          - 8.8.8.8
