@@ -1,4 +1,4 @@
-# Ubuntu Server Basic Security Setup
+# Ubuntu Server 24.04 Basic Security Setup
 
 > This guide covers basic security hardening steps that provide a reasonable baseline for a homelab Ubuntu server.
 > It is not exhaustive — additional measures may be required depending on your threat model and exposure.
