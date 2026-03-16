@@ -54,6 +54,9 @@
 3. Verify the firewall status
     - `sudo ufw status`
 
+> **Note:** any non-containerized service you want to be accessible (e.g. Node Exporter, custom apps) must have its
+> port explicitly allowed — e.g. `sudo ufw allow 9100/tcp`
+
 ## 6. Install Fail2ban
 
 **Fail2ban** monitors log files and temporarily bans IPs that show signs of brute-force attempts.
