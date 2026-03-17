@@ -15,7 +15,20 @@ comments on configuration parameters and other details**
 ## Repository structure
 
 - [Guides](./guides/README.md)
+    - Ubuntu Server 24.04
+        - [Packages Update and Upgrade](./guides/ubuntu-server-24-04/packages-update-and-upgrade)
+        - [QEMU Guest Agent Installation](./guides/ubuntu-server-24-04/packages-update-and-upgrade)
+        - [Static IP Address Configuration](./guides/ubuntu-server-24-04/static-ip-address-configuration)
+        - [Basic Security Setup](./guides/ubuntu-server-24-04/basic-security-setup)
+        - [Node Exporter Installation](./guides/ubuntu-server-24-04/node-exporter-installation)
+        - [Docker Installation](./guides/ubuntu-server-24-04/docker-installation)
+    - TrueNAS
+        - [TLS Certificates Setup](./guides/truenas/tls-certificates-setup)
+    - Other
+        - [OpenSSH Configuration](./guides/other/openssh-configuration)
 - [Services setup guides](./services/README.md)
+    - [Traefik](./services/traefik/README.md)
+    - [Prometheus](./services/prometheus/README.md)
 
 ## Purpose
 

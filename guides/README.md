@@ -15,3 +15,7 @@ dedicated section.
 ## TrueNAS
 
 - [TLS Certificates Setup](truenas/tls-certificates-setup)
+
+## Other
+
+- [OpenSSH Configuration](other/openssh-configuration)
