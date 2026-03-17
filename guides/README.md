@@ -6,6 +6,7 @@ dedicated section.
 ## Ubuntu Server 24.04
 
 - [Packages Update and Upgrade](ubuntu-server-24-04/packages-update-and-upgrade)
+- [QUMU Guest Agent Installation](ubuntu-server-24-04/packages-update-and-upgrade)
 - [Static IP Address Configuration](ubuntu-server-24-04/static-ip-address-configuration)
 - [Basic Security Setup](ubuntu-server-24-04/basic-security-setup)
 - [Docker Installation](ubuntu-server-24-04/docker-installation)
