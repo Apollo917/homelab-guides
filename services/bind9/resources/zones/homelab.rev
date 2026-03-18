@@ -1,0 +1,24 @@
+$ORIGIN 0.168.192.in-addr.arpa.
+$TTL  2d
+
+@     IN    SOA   ns.example.com. admin.example.com. (
+                  1000000000      ; Serial Note: increment after each change
+                  12h             ; Refresh
+                  15m             ; Retry
+                  3w              ; Expire
+                  2h              ; Negative Cache TTL
+)            
+
+; ===== Name servers
+
+@   IN  NS  ns.example.com.
+
+; ===== Hosts
+
+; = Common
+
+2 IN  PTR pc-one.example.com.
+
+; = Homelab
+
+100 IN  PTR node-1.example.com.
