@@ -28,12 +28,13 @@ comments on configuration parameters and other details**
         - [SATA Controller Passthrough](guides/proxmox/sata-controller-passthrough)
         - [VM Template Setup](guides/proxmox/vm-template-setup)
     - TrueNAS
-        - [TLS Certificates Setup](./guides/truenas/tls-certificates-setup)
+        - [TLS Certificates Setup](guides/truenas/tls-certificates-setup)
     - Other
-        - [OpenSSH Configuration](./guides/other/openssh-configuration)
-- [Services setup guides](./services/README.md)
-    - [Traefik](./services/traefik/README.md)
-    - [Prometheus](./services/prometheus/README.md)
+        - [OpenSSH Configuration](guides/other/openssh-configuration)
+- [Services setup guides](services)
+    - [Traefik](services/traefik)
+    - [Prometheus](services/prometheus)
+    - [Bind9](services/bind9)
 
 ## Purpose
 

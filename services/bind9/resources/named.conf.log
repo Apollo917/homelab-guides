@@ -1,0 +1,9 @@
+logging {
+    channel syslog {
+        syslog daemon;
+        severity notice;
+        print-time yes;
+        print-category yes;
+    };
+    category default { syslog; };
+};
