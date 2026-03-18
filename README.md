@@ -25,6 +25,7 @@ comments on configuration parameters and other details**
     - Proxmox
         - [After Installation Basic Configuration](guides/proxmox/after-installation-basic-configuration)
         - [SSD Disk Passthrough](guides/proxmox/ssd-disk-passthrough)
+        - [VM Template Setup](guides/proxmox/vm-template-setup)
     - TrueNAS
         - [TLS Certificates Setup](./guides/truenas/tls-certificates-setup)
     - Other
