@@ -15,6 +15,7 @@ dedicated section
 ## Proxmox
 
 - [After Installation Basic Configuration](proxmox/after-installation-basic-configuration)
+- [SSD Disk Passthrough](proxmox/ssd-disk-passthrough)
 
 ## TrueNAS
 
