@@ -22,6 +22,8 @@ comments on configuration parameters and other details**
         - [Basic Security Setup](./guides/ubuntu-server-24-04/basic-security-setup)
         - [Node Exporter Installation](./guides/ubuntu-server-24-04/node-exporter-installation)
         - [Docker Installation](./guides/ubuntu-server-24-04/docker-installation)
+    - Proxmox
+        - [After Installation Basic Configuration](guides/proxmox/after-installation-basic-configuration)
     - TrueNAS
         - [TLS Certificates Setup](./guides/truenas/tls-certificates-setup)
     - Other
