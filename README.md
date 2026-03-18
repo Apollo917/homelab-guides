@@ -24,6 +24,7 @@ comments on configuration parameters and other details**
         - [Docker Installation](./guides/ubuntu-server-24-04/docker-installation)
     - Proxmox
         - [After Installation Basic Configuration](guides/proxmox/after-installation-basic-configuration)
+        - [SSD Disk Passthrough](guides/proxmox/ssd-disk-passthrough)
     - TrueNAS
         - [TLS Certificates Setup](./guides/truenas/tls-certificates-setup)
     - Other
