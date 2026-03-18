@@ -1,7 +1,7 @@
 # Homelab Guides
 
 General-purpose homelab guides covering operating systems, system-level services, and topics that do not fit into a
-dedicated section.
+dedicated section
 
 ## Ubuntu Server 24.04
 
@@ -11,6 +11,10 @@ dedicated section.
 - [Basic Security Setup](ubuntu-server-24-04/basic-security-setup)
 - [Node Exporter Installation](ubuntu-server-24-04/node-exporter-installation)
 - [Docker Installation](ubuntu-server-24-04/docker-installation)
+
+## Proxmox
+
+- [After Installation Basic Configuration](proxmox/after-installation-basic-configuration)
 
 ## TrueNAS
 
