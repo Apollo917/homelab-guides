@@ -16,6 +16,7 @@ dedicated section
 
 - [After Installation Basic Configuration](proxmox/after-installation-basic-configuration)
 - [SSD Disk Passthrough](proxmox/ssd-disk-passthrough)
+- [VM Template Setup](proxmox/vm-template-setup)
 
 ## TrueNAS
 
