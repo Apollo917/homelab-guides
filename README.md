@@ -31,6 +31,7 @@ comments on configuration parameters and other details**
         - [TLS Certificates Setup](guides/truenas/tls-certificates-setup)
     - Other
         - [OpenSSH Configuration](guides/other/openssh-configuration)
+        - [Wake-on-LAN (WoL) Setup](guides/other/wake-on-lan)
 - [Services setup guides](services)
     - [Bind9](services/bind9)
     - [Traefik](services/traefik)
