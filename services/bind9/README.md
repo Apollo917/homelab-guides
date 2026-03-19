@@ -30,7 +30,7 @@ external DNS provider or editing `/etc/hosts` on every machine.
 8. Restart Bind9 service
     - `sudo systemctl restart bind9`
 
-## Resources
+## Materials
 
 ### Docs
 

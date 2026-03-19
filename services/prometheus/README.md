@@ -14,7 +14,7 @@ pairs naturally with Grafana for dashboards and Alertmanager for notifications.
 - [Docker](./docker/README.md)
 - [Docker Swarm](./docker-swarm/README.md)
 
-## Resources
+## Materials
 
 - [Docker Hub](https://hub.docker.com/r/prom/prometheus)
 

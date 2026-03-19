@@ -1,5 +1,7 @@
-# Traefik Docker Swarm Setup
+# Traefik – Docker Swarm Setup
 
+- Refer to the [Materials](../README.md#materials) section in the parent README for documentation, useful links, and
+  troubleshooting resources
 - This guide covers a single-node Docker Swarm deployment
 - This guide assumes:
     - You are already running Docker Swarm, have a node ready to deploy the Traefik service on, and that node is
@@ -21,7 +23,7 @@
 5. Update the `<DOMAIN_NAME>` value in the [compose.yml](./resources/compose.yml) file
 6. Update the `<CLOUDFLARE_ACCOUNT_EMAIL_ADDRESS>` value in the [traefik.yml](./resources/configs/traefik.yml) file
 7. Create the Traefik root directory
-    - `mkdir traefik`
+    - `mkdir ~/docker/traefik`
 8. Move the contents of the [resources](./resources) directory into the Traefik root directory
 9. Adjust the Traefik configuration if needed
     - Traefik Docker image version

@@ -4,6 +4,7 @@ Setup guides for homelab services
 
 ## Services
 
+- [Bind9](bind9)
 - [Traefik](traefik)
 - [Prometheus](prometheus)
-- [Bind9](bind9)
+- [Vaultwarden](vaultwarden)

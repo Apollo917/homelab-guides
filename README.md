@@ -32,9 +32,10 @@ comments on configuration parameters and other details**
     - Other
         - [OpenSSH Configuration](guides/other/openssh-configuration)
 - [Services setup guides](services)
+    - [Bind9](services/bind9)
     - [Traefik](services/traefik)
     - [Prometheus](services/prometheus)
-    - [Bind9](services/bind9)
+    - [Vaultwarden](services/vaultwarden)
 
 ## Purpose
 

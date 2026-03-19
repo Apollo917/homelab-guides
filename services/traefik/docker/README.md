@@ -1,5 +1,7 @@
-# Traefik Docker Setup
+# Traefik – Docker Setup
 
+- Refer to the [Materials](../README.md#materials) section in the parent README for documentation, useful links, and
+  troubleshooting resources
 - This guide assumes:
     - You own the base directory for all Docker-related files. It could be e.g. `~/docker/<service_name>`
     - **htpasswd** is installed
@@ -16,7 +18,7 @@
     - `CF_DNS_API_TOKEN`
 4. Update the `<CLOUDFLARE_ACCOUNT_EMAIL_ADDRESS>` value in the [traefik.yml](./resources/configs/traefik.yml) file
 5. Create the Traefik root directory
-    - `mkdir traefik`
+    - `mkdir ~/docker/traefik`
 6. Move the contents of the [resources](./resources) directory into the Traefik root directory
 7. Adjust the Traefik configuration if needed
     - Traefik Docker image version

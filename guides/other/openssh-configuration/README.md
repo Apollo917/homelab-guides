@@ -133,7 +133,7 @@ git clone git@github.com:personal-org/repo.git
 git clone git@github.com-work:work-org/repo.git
 ```
 
-## Resources
+## Materials
 
 The [`resources/`](resources) directory mirrors the proposed `~/.ssh/` structure and can be used as a starting point:
 
