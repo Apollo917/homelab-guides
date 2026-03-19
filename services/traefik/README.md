@@ -15,7 +15,7 @@ Let’s Encrypt), and provide features such as load balancing, middleware suppor
 - [Docker](./docker/README.md)
 - [Docker Swarm](./docker-swarm/README.md)
 
-## Resources
+## Materials
 
 - [Docker Hub](https://hub.docker.com/_/traefik)
 

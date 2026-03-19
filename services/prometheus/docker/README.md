@@ -1,5 +1,7 @@
-# Prometheus Docker Setup
+# Prometheus – Docker Setup
 
+- Refer to the [Materials](../README.md#materials) section in the parent README for documentation, useful links, and
+  troubleshooting resources
 - This guide assumes:
     - The reverse proxy network (**reverse-proxy**) is already created
     - [Traefik](../../traefik/README.md) is already running, as Prometheus is configured to use it as a reverse
@@ -9,7 +11,7 @@
 ## Setup
 
 1. Create the Prometheus root directory
-    - `mkdir prometheus`
+    - `mkdir ~/docker/prometheus`
 2. Move the contents of the [resources](./resources) directory into the Prometheus root directory
 3. Remove **.gitkeep** file from the **data** directory
 4. Set [.env](./resources/.env) file property values

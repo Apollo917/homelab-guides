@@ -1,5 +1,7 @@
-# Prometheus Docker Swarm Setup
+# Prometheus – Docker Swarm Setup
 
+- Refer to the [Materials](../README.md#materials) section in the parent README for documentation, useful links, and
+  troubleshooting resources
 - This guide covers a single-node Docker Swarm deployment
 - This guide assumes:
     - You are already running Docker Swarm, have a node ready to deploy the Prometheus service on, and that node is
@@ -12,7 +14,7 @@
 ## Setup
 
 1. Create the Prometheus root directory
-    - `mkdir prometheus`
+    - `mkdir ~/docker/prometheus`
 2. Move the contents of the [resources](./resources) directory into the Prometheus root directory
 3. Remove **.gitkeep** file from the **data** directory
 4. Set [compose.yml](./resources/compose.yml) file property values

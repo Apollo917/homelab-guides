@@ -40,7 +40,7 @@ monitor and paired with Prometheus and Grafana to build dashboards and alerts
 10. Clean up
     - `rm -rf node_exporter*`
 
-## Resources
+## Materials
 
 ### Docs
 
