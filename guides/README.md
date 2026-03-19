@@ -26,3 +26,4 @@ dedicated section
 ## Other
 
 - [OpenSSH Configuration](other/openssh-configuration)
+- [Wake-on-LAN (WoL) Setup](other/wake-on-lan)
