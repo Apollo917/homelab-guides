@@ -1,0 +1,39 @@
+name: gitea
+services:
+  gitea:
+    image: gitea/gitea:1.25
+    container_name: gitea
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      # Expose the SSH port to allow Git operations over SSH (clone, push, pull)
+      - ${SSH_PORT:?error}:${SSH_PORT:?error}
+    env_file: .env
+    environment:
+      USER_UID: ${UID:?error}
+      USER_GID: ${GID:?error}
+      GITEA__database__DB_TYPE: ${DB_TYPE:?error}
+      GITEA__database__HOST: ${DB_HOST:?error}:${DB_PORT:?error}
+      GITEA__database__NAME: ${DB_NAME:?error}
+      GITEA__database__USER: ${DB_USER:?error}
+      GITEA__database__PASSWD: ${DB_PASSWORD:?error}
+      GITEA__server__SSH_PORT: ${SSH_PORT:?error}
+      GITEA__server__ROOT_URL: https://${SERVICE_URL:?error}
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/data
+    networks:
+      - reverse-proxy
+    labels:
+      # Traefik integration labels - start
+      - "traefik.enable=true"
+      - "traefik.http.services.gitea.loadBalancer.server.port=3000"
+      - "traefik.http.routers.gitea-secure.service=gitea"
+      - "traefik.http.routers.gitea-secure.tls=true"
+      - "traefik.http.routers.gitea-secure.entrypoints=private-https"
+      - "traefik.http.routers.gitea-secure.rule=Host(`${SERVICE_URL:?error}`)"
+      # Traefik integration labels - end
+networks:
+  reverse-proxy:
+    external: true

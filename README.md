@@ -37,6 +37,7 @@ comments on configuration parameters and other details**
     - [Prometheus](services/prometheus)
     - [Grafana](services/grafana)
     - [Vaultwarden](services/vaultwarden)
+    - [Gitea](services/gitea)
 
 ## Purpose
 
