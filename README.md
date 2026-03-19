@@ -35,6 +35,7 @@ comments on configuration parameters and other details**
     - [Bind9](services/bind9)
     - [Traefik](services/traefik)
     - [Prometheus](services/prometheus)
+    - [Grafana](services/grafana)
     - [Vaultwarden](services/vaultwarden)
 
 ## Purpose
