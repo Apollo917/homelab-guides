@@ -69,3 +69,29 @@ Instead of jumping between videos, articles, bookmarks, and scattered notes, thi
 - Guides may cover multiple installation approaches depending on the service
 - Some setups may use containers, while others may run directly on the host system
 - Resource links and references are included when they help explain or support the guide
+
+## Materials
+
+A collection of useful external resources — YouTube channels, communities, and curated repositories — that may
+help with building, maintaining, and expanding a homelab
+
+### YouTube
+
+- [Techno Tim](https://www.youtube.com/@TechnoTim)
+- [Christian Lempa](https://www.youtube.com/@christianlempa)
+- [NetworkChuck](https://www.youtube.com/@NetworkChuck)
+- [VirtualizationHowto](https://www.youtube.com/@VirtualizationHowto)
+- [DB Tech](https://www.youtube.com/@DBTechYT)
+- [Jeff Geerling](https://www.youtube.com/@JeffGeerling)
+- [OneMarcFifty](https://www.youtube.com/@OneMarcFifty)
+- [Wolfgang's Channel](https://www.youtube.com/@WolfgangsChannel)
+
+### Community
+
+- [Discord - Techno Tim](https://l.technotim.live/discord)
+- [Discord - Christian Lempa](https://discord.com/invite/christian-lempa-s-tech-community-702179729767268433)
+
+### Repos
+
+- [Awesome-Selfhosted](https://github.com/awesome-selfhosted/awesome-selfhosted)
+- [Dashboard Icons](https://github.com/walkxcode/dashboard-icons)
