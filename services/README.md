@@ -9,3 +9,4 @@ Setup guides for homelab services
 - [Prometheus](prometheus)
 - [Grafana](grafana)
 - [Vaultwarden](vaultwarden)
+- [Gitea](gitea)
