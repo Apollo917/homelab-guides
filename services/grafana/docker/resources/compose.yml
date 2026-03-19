@@ -1,0 +1,23 @@
+name: 'grafana'
+services:
+  grafana:
+    image: grafana/grafana-oss:12.3
+    container_name: grafana
+    restart: unless-stopped
+    user: ${UID:?error}:${GID:?error}
+    volumes:
+      - ./data:/var/lib/grafana
+    networks:
+      - reverse-proxy
+    labels:
+      # Traefik integration labels - start
+      - "traefik.enable=true"
+      - "traefik.http.services.grafana.loadBalancer.server.port=3000"
+      - "traefik.http.routers.grafana-secure.service=grafana"
+      - "traefik.http.routers.grafana-secure.tls=true"
+      - "traefik.http.routers.grafana-secure.entrypoints=private-https"
+      - "traefik.http.routers.grafana-secure.rule=Host(`${SERVICE_URL:?error}`)"
+      # Traefik integration labels - end
+networks:
+  reverse-proxy:
+    external: true
