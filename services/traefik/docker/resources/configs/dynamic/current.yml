@@ -24,7 +24,7 @@ http:
       service: proxmox-node-one
       entryPoints:
         - private-https
-      rule: Host(`node-one.{{ env "DOMAIN_NAME" }}`)
+      rule: Host(`node-one.pve.{{ env "DOMAIN_NAME" }}`)
       middlewares:
         - default-headers
         - local-ips-allowlist
@@ -35,7 +35,7 @@ http:
       service: exporter-node-one
       entryPoints:
         - private-https
-      rule: Host(`node-one.exporter.{{ env "DOMAIN_NAME" }}`)
+      rule: Host(`node-one.exporters.{{ env "DOMAIN_NAME" }}`)
       middlewares:
         - local-ips-allowlist
       tls:

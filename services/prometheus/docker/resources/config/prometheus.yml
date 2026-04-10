@@ -6,8 +6,7 @@ scrape_configs:
     scrape_interval: 30s
     dns_sd_configs:
       - names:
-          - "node-one.example.com"
-          - "node-two.example.com"
+          - "node-exporter.exporters.example.com"
         type: A
         port: 9100
         refresh_interval: "10m"

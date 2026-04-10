@@ -16,10 +16,11 @@ monitor and paired with Prometheus and Grafana to build dashboards and alerts
 4. Download the latest Node Exporter version
    from [Node Exporter releases](https://github.com/prometheus/node_exporter/releases) — pick the latest release and
    replace `<VERSION>` in the commands below with the version number (e.g. `1.9.1`)
+    - `wget https://github.com/prometheus/node_exporter/releases/download/v<VERSION>/node_exporter-<VERSION>.linux-amd64.tar.gz`
     - > **Note:** the commands below use the `linux-amd64` build — if your host is ARM-based (e.g. Raspberry Pi, some
       > cloud VMs), select the matching `linux-arm64` or `linux-armv7` archive from the releases page and adjust the
       > filenames accordingly
-    - `wget https://github.com/prometheus/node_exporter/releases/download/v<VERSION>/node_exporter-<VERSION>.linux-amd64.tar.gz`
+
 5. Unpack the downloaded Node Exporter binary and rename the directory
     - `tar -xvf node_exporter-<VERSION>.linux-amd64.tar.gz`
     - `mv node_exporter-<VERSION>.linux-amd64 node_exporter_files`
@@ -27,7 +28,7 @@ monitor and paired with Prometheus and Grafana to build dashboards and alerts
    Node Exporter user
     - `sudo cp node_exporter_files/node_exporter /usr/bin/`
     - `sudo chown node_exporter:node_exporter /usr/bin/node_exporter`
-7. Create [Node Exporter Service](node_exporter.service) — use the service file from the Configs section as a template
+7. Create Node Exporter Service — use the [service file](node_exporter.service) from the Configs section as a template
     - `sudo nano /usr/lib/systemd/system/node_exporter.service`
     - `sudo chmod 664 /usr/lib/systemd/system/node_exporter.service`
 8. Reload systemd, enable and start Node Exporter
