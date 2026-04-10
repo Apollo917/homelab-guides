@@ -22,6 +22,9 @@
       adjust it to your needs with
       other [service discovery methods](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)
       configs
+    - **Tip:** with DNS discovery, you can add multiple A records under a single DNS name (e.g.
+      `node-exporter.exporters.example.com` pointing to several hosts) — Prometheus will resolve all of them and scrape
+      each one automatically
 6. Navigate to the Prometheus root directory and launch the Prometheus service
     - `docker compose up -d`
 7. Verify the deployment

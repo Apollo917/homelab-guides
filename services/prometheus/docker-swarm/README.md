@@ -21,7 +21,7 @@
     - **<UID>**: user id (`id -u`)
     - **<GID>**: user group id (`id -g`)
     - **<DOMAIN_NAME>**: your domain/host name
-    - **<NODE_NAME>**: the label assigned to your Swarm node
+    - **<HOST_NAME>**: the host name of your Swarm node
     - **storage.tsdb.retention.time**: (optional) override the scraped metrics retention period
 5. Adjust the Prometheus configuration if needed
     - Prometheus image version, [prometheus.yml](./resources/config/prometheus.yml) scrape config, etc.
@@ -30,6 +30,9 @@
       adjust it to your needs with
       other [service discovery methods](https://prometheus.io/docs/prometheus/latest/configuration/configuration/)
       configs
+    - **Tip:** with DNS discovery, you can add multiple A records under a single DNS name (e.g.
+      `node-exporter.exporters.example.com` pointing to several hosts) — Prometheus will resolve all of them and scrape
+      each one automatically
 6. Navigate to the Prometheus root directory and launch the Prometheus service
     - `docker stack deploy -c compose.yml prometheus`
 7. Verify the deployment

@@ -48,7 +48,12 @@
 > relied upon to restrict Docker container traffic.
 
 1. Allow SSH connections before enabling the firewall
-    - `sudo ufw allow ssh`
+    - Allows SSH traffic so you are not locked out of the server when UFW is enabled
+        - `sudo ufw allow ssh`
+    - (Optional) Allow DNS traffic (required if running a local DNS server, e.g. Bind9)
+        - `sudo ufw allow 53`
+    - (Optional) Allow Node Exporter metrics scraping on port 9100
+        - `sudo ufw allow 9100/tcp`
 2. Enable UFW
     - `sudo ufw enable`
 3. Verify the firewall status

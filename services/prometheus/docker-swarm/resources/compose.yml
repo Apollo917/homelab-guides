@@ -22,7 +22,7 @@ services:
       replicas: 1
       placement:
         constraints:
-          - node.labels.name == <NODE_NAME> # Any label you wish
+          - node.hostname == <HOST_NAME>
 networks:
   reverse-proxy:
     external: true

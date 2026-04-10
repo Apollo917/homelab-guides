@@ -16,13 +16,20 @@ ns  IN  A 192.168.0.100
 
 ; ===== Hosts
 
-; = Common
+; = Devices
 
-pc-one          IN  A 192.168.0.2
+pc-one  IN  A 192.168.0.2
 
 ; = Homelab
 
-node-1         IN  A   192.168.0.100
+node-1  IN  A   192.168.0.100
+
+; ===== Prometheus Exporters
+
+node-exporter.exporters.lab256.dev.  IN  A  192.168.0.2     ; pc-one
+node-exporter.exporters.lab256.dev.  IN  A  192.168.0.100   ; node-1
+
+; ===== Fallback
 
 ; Route all unresolved hostnames to this IP address
 * IN  A 192.168.0.100

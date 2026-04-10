@@ -29,6 +29,46 @@ These steps are not required for Docker to work, but are essential for a usable 
 - **Starting Docker on boot** — without this, Docker won't start after a reboot and your containers won't come back up
   automatically
 
+## Docker Swarm Initialization
+
+**Docker Swarm** is Docker's built-in container orchestration mode. It turns a group of Docker hosts into a single
+cluster — called a **swarm** — with one or more **manager** nodes that schedule workloads and **worker** nodes that run
+them. Services defined in a Compose file are distributed across the swarm, and Swarm handles restarts, scaling, and
+rolling updates automatically
+
+Key concepts:
+
+- **Manager node** — controls the swarm, schedules services, and maintains cluster state; the node you run
+  `docker stack deploy` from
+- **Worker node** — joins the swarm and runs assigned containers; has no scheduling authority
+- **Service** — the Swarm equivalent of a Compose service; defines the image, replicas, and placement constraints
+- **Stack** — a group of related services deployed together from a Compose file via `docker stack deploy`
+
+### Swarm Initialization
+
+1. Initialize the swarm on the manager node
+    - `docker swarm init --advertise-addr <HOST_IP>`
+    - This outputs a `docker swarm join` command with a token — save it to add worker nodes later
+2. Verify the swarm is active
+    - `docker node ls`
+3. (Optional) Retrieve the join token later if needed
+    - `docker swarm join-token worker`
+
+> **Note:** a single-node swarm (manager only) is valid and useful — you still get Swarm-only features like
+> `docker stack deploy`, configs, and secrets without needing multiple hosts
+
+### Tips
+
+#### Labeling nodes
+
+Labels are key/value metadata attached to a node, used to control where services are scheduled
+via placement constraints in your Compose file
+
+- Add a label to a node
+    - `docker node update --label-add <KEY>=<VALUE> <NODE_NAME>`
+- View labels on a node
+    - `docker node inspect <NODE_NAME> --format '{{ .Spec.Labels }}'`
+
 ## Materials
 
 ### Docs
