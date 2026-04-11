@@ -18,11 +18,12 @@
 2. Move the contents of the [resources](./resources) directory into the Prometheus root directory
 3. Remove **.gitkeep** file from the **data** directory
 4. Set [compose.yml](./resources/compose.yml) file property values
-    - **<UID>**: user id (`id -u`)
-    - **<GID>**: user group id (`id -g`)
-    - **<DOMAIN_NAME>**: your domain/host name
+    - **<UID>**: the system user ID under which Prometheus will run — run `id -u` to get the current user's ID
+    - **<GID>**: the system group ID under which Prometheus will run — run `id -g` to get the current user's group ID
+    - **<DOMAIN_NAME>**: the base domain name (e.g. example.com) — Prometheus will be accessible at prometheus.<
+      DOMAIN_NAME>
     - **<HOST_NAME>**: the host name of your Swarm node
-    - **storage.tsdb.retention.time**: (optional) override the scraped metrics retention period
+    - **storage.tsdb.retention.time**: (optional) how long Prometheus retains time series data (e.g. 15d)
 5. Adjust the Prometheus configuration if needed
     - Prometheus image version, [prometheus.yml](./resources/config/prometheus.yml) scrape config, etc.
     - **Note:** the current [prometheus.yml](./resources/config/prometheus.yml) config uses

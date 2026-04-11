@@ -19,7 +19,7 @@ services:
       GITEA__database__USER: ${DB_USER:?error}
       GITEA__database__PASSWD: ${DB_PASSWORD:?error}
       GITEA__server__SSH_PORT: ${SSH_PORT:?error}
-      GITEA__server__ROOT_URL: https://${SERVICE_URL:?error}
+      GITEA__server__ROOT_URL: https://gitea.${DOMAIN_NAME:?error}
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - ./data:/data
@@ -32,7 +32,7 @@ services:
       - "traefik.http.routers.gitea-secure.service=gitea"
       - "traefik.http.routers.gitea-secure.tls=true"
       - "traefik.http.routers.gitea-secure.entrypoints=private-https"
-      - "traefik.http.routers.gitea-secure.rule=Host(`${SERVICE_URL:?error}`)"
+      - "traefik.http.routers.gitea-secure.rule=Host(`gitea.${DOMAIN_NAME:?error}`)"
       # Traefik integration labels - end
 networks:
   reverse-proxy:
