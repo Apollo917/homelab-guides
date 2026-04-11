@@ -16,7 +16,7 @@ services:
       - "traefik.http.routers.grafana-secure.service=grafana"
       - "traefik.http.routers.grafana-secure.tls=true"
       - "traefik.http.routers.grafana-secure.entrypoints=private-https"
-      - "traefik.http.routers.grafana-secure.rule=Host(`${SERVICE_URL:?error}`)"
+      - "traefik.http.routers.grafana-secure.rule=Host(`grafana.${DOMAIN_NAME:?error}`)"
       # Traefik integration labels - end
 networks:
   reverse-proxy:

@@ -14,7 +14,7 @@
     - `mkdir ~/docker/prometheus`
 2. Move the contents of the [resources](./resources) directory into the Prometheus root directory
 3. Remove **.gitkeep** file from the **data** directory
-4. Set [.env](./resources/.env) file property values
+4. Fill in the required properties and any optional ones as needed in the [.env](resources/.env) file
 5. Adjust the Prometheus configuration if needed
     - Prometheus image version, [prometheus.yml](./resources/config/prometheus.yml) scrape config, etc.
     - **Note:** the current [prometheus.yml](./resources/config/prometheus.yml) config uses

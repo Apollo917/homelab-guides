@@ -20,13 +20,14 @@
     - `docker network create --driver overlay --attachable reverse-proxy`
 4. Create all required Docker Swarm secrets
     - `printf "<CLOUDFLARE_DNS_API_TOKEN>" | docker secret create cf_dns_api_token -`
-5. Set [compose.yml](./resources/compose.yml) file property values
-    - **<DOMAIN_NAME>**: your domain/host name
-    - **<HOST_NAME>**: the host name of your Swarm node
-6. Update the `<CLOUDFLARE_ACCOUNT_EMAIL_ADDRESS>` value in the [traefik.yml](./resources/configs/traefik.yml) file
-7. Create the Traefik root directory
+5. Create the Traefik root directory
     - `mkdir ~/docker/traefik`
-8. Move the contents of the [resources](./resources) directory into the Traefik root directory
+6. Move the contents of the [resources](./resources) directory into the Traefik root directory
+7. Set [compose.yml](./resources/compose.yml) file property values
+    - **<DOMAIN_NAME>**: the base domain name (e.g. example.com) — used to route traffic and issue TLS certificates for
+      services under this domain. Traefik will be accessible at traefik.<DOMAIN_NAME>
+    - **<HOST_NAME>**: the host name of your Swarm node
+8. Update the `<CLOUDFLARE_ACCOUNT_EMAIL_ADDRESS>` value in the [traefik.yml](./resources/configs/traefik.yml) file
 9. Adjust the Traefik configuration if needed
     - Traefik Docker image version
     - [Traefik static config](./resources/configs/traefik.yml)

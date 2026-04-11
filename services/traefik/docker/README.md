@@ -13,20 +13,17 @@
     - **Zone:Read, DNS:Edit**
 2. Create a Docker network for Traefik
     - `docker network create reverse-proxy`
-3. Set the required property values in the [.env](./resources/.env) file
-    - `DOMAIN_NAME`
-    - `CF_DNS_API_TOKEN`
-4. Update the `<CLOUDFLARE_ACCOUNT_EMAIL_ADDRESS>` value in the [traefik.yml](./resources/configs/traefik.yml) file
-5. Create the Traefik root directory
+3. Create the Traefik root directory
     - `mkdir ~/docker/traefik`
-6. Move the contents of the [resources](./resources) directory into the Traefik root directory
+4. Move the contents of the [resources](./resources) directory into the Traefik root directory
+5. Fill in the required properties and any optional ones as needed in the [.env](resources/.env) file
+6. Update the `<CLOUDFLARE_ACCOUNT_EMAIL_ADDRESS>` value in the [traefik.yml](./resources/configs/traefik.yml) file
 7. Adjust the Traefik configuration if needed
     - Traefik Docker image version
     - [Traefik static config](./resources/configs/traefik.yml)
     - [Traefik dynamic configs](./resources/configs/dynamic)
     - **Note:** Cloudflare IP ranges in [_default.yml](./resources/configs/dynamic/_default.yml) may change —
       check https://www.cloudflare.com/ips/ periodically
-    - etc.
 8. Generate and set password for Basic Auth
     - `htpasswd -nB <USERNAME>`
     - Replace `<LOGIN_PASSWORD>` with the generated value in
