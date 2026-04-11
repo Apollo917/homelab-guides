@@ -5,8 +5,9 @@ Setup guides for homelab services
 ## Services
 
 - [Bind9](bind9)
-- [Traefik](traefik)
-- [Prometheus](prometheus)
-- [Grafana](grafana)
-- [Vaultwarden](vaultwarden)
 - [Gitea](gitea)
+- [Grafana](grafana)
+- [IT-TOOLS](it-tools)
+- [Prometheus](prometheus)
+- [Traefik](traefik)
+- [Vaultwarden](vaultwarden)

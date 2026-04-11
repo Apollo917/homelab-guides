@@ -34,11 +34,12 @@ comments on configuration parameters and other details**
         - [Wake-on-LAN (WoL) Setup](guides/other/wake-on-lan)
 - [Services setup guides](services)
     - [Bind9](services/bind9)
-    - [Traefik](services/traefik)
-    - [Prometheus](services/prometheus)
-    - [Grafana](services/grafana)
-    - [Vaultwarden](services/vaultwarden)
     - [Gitea](services/gitea)
+    - [Grafana](services/grafana)
+    - [IT-TOOLS](services/it-tools)
+    - [Prometheus](services/prometheus)
+    - [Traefik](services/traefik)
+    - [Vaultwarden](services/vaultwarden)
 
 ## Purpose
 

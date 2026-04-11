@@ -1,0 +1,23 @@
+name: "tools"
+services:
+  tools:
+    image: corentinth/it-tools:2024.10.22-7ca5933
+    container_name: tools
+    restart: unless-stopped
+    security_opt:
+      - no-new-privileges:true
+    env_file: .env
+    networks:
+      - reverse-proxy
+    labels:
+      # Traefik integration labels - start
+      - "traefik.enable=true"
+      - "traefik.http.services.tools.loadBalancer.server.port=80"
+      - "traefik.http.routers.tools.service=tools"
+      - "traefik.http.routers.tools.tls.certresolver=cloudflare"
+      - "traefik.http.routers.tools.entrypoints=private-https"
+      - "traefik.http.routers.tools.rule=Host(`tools.<DOMAIN_NAME>`)"
+      # Traefik integration labels - end
+networks:
+  reverse-proxy:
+    external: true
