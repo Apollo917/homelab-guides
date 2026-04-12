@@ -1,0 +1,23 @@
+services:
+  tools:
+    image: corentinth/it-tools:2024.10.22-7ca5933
+    networks:
+      - reverse-proxy # Same network as for Traefik
+    labels:
+      # Traefik integration labels - start
+      - "traefik.enable=true"
+      - "traefik.http.services.tools.loadBalancer.server.port=80"
+      - "traefik.http.routers.tools.service=tools"
+      - "traefik.http.routers.tools.tls.certresolver=cloudflare"
+      - "traefik.http.routers.tools.entrypoints=private-https"
+      - "traefik.http.routers.tools.rule=Host(`tools.<DOMAIN_NAME>`)"
+      # Traefik integration labels - end
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == <HOST_NAME>
+networks:
+  reverse-proxy:
+    external: true
