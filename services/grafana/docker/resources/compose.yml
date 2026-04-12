@@ -13,10 +13,10 @@ services:
       # Traefik integration labels - start
       - "traefik.enable=true"
       - "traefik.http.services.grafana.loadBalancer.server.port=3000"
-      - "traefik.http.routers.grafana-secure.service=grafana"
-      - "traefik.http.routers.grafana-secure.tls=true"
-      - "traefik.http.routers.grafana-secure.entrypoints=private-https"
-      - "traefik.http.routers.grafana-secure.rule=Host(`grafana.${DOMAIN_NAME:?error}`)"
+      - "traefik.http.routers.grafana.service=grafana"
+      - "traefik.http.routers.grafana.tls=true"
+      - "traefik.http.routers.grafana.entrypoints=private-https"
+      - "traefik.http.routers.grafana.rule=Host(`grafana.${DOMAIN_NAME:?error}`)"
       # Traefik integration labels - end
 networks:
   reverse-proxy:

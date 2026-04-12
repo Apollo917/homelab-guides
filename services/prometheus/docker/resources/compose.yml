@@ -18,10 +18,10 @@ services:
       # Traefik integration labels - start
       - "traefik.enable=true"
       - "traefik.http.services.prometheus.loadBalancer.server.port=9090"
-      - "traefik.http.routers.prometheus-secure.service=prometheus"
-      - "traefik.http.routers.prometheus-secure.tls=true"
-      - "traefik.http.routers.prometheus-secure.entrypoints=private-https"
-      - "traefik.http.routers.prometheus-secure.rule=Host(`prometheus.${DOMAIN_NAME:?error}`)"
+      - "traefik.http.routers.prometheus.service=prometheus"
+      - "traefik.http.routers.prometheus.tls=true"
+      - "traefik.http.routers.prometheus.entrypoints=private-https"
+      - "traefik.http.routers.prometheus.rule=Host(`prometheus.${DOMAIN_NAME:?error}`)"
       # Traefik integration labels - end
 networks:
   reverse-proxy:

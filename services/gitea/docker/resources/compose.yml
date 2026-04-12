@@ -29,10 +29,10 @@ services:
       # Traefik integration labels - start
       - "traefik.enable=true"
       - "traefik.http.services.gitea.loadBalancer.server.port=3000"
-      - "traefik.http.routers.gitea-secure.service=gitea"
-      - "traefik.http.routers.gitea-secure.tls=true"
-      - "traefik.http.routers.gitea-secure.entrypoints=private-https"
-      - "traefik.http.routers.gitea-secure.rule=Host(`gitea.${DOMAIN_NAME:?error}`)"
+      - "traefik.http.routers.gitea.service=gitea"
+      - "traefik.http.routers.gitea.tls=true"
+      - "traefik.http.routers.gitea.entrypoints=private-https"
+      - "traefik.http.routers.gitea.rule=Host(`gitea.${DOMAIN_NAME:?error}`)"
       # Traefik integration labels - end
 networks:
   reverse-proxy:
