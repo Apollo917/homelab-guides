@@ -1,0 +1,15 @@
+# https://gethomepage.dev/configs/bookmarks/
+
+- Bookmarks:
+    - GitHub:
+        - href: https://github.com/Apollo917
+          icon: github
+          abbr: gh
+    - MakerWorld:
+        - href: https://makerworld.com/en/@apollo917/upload
+          icon: maker-world
+          abbr: mw
+    - Printables:
+        - href: https://www.printables.com/@apollo917_4881357/models
+          icon: printables
+          abbr: pr

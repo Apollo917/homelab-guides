@@ -1,0 +1,17 @@
+# Settings Docs: https://gethomepage.dev/configs/settings/
+# Icons: https://dashboardicons.com/
+
+title: Awesome Homelab
+bookmarksStyle: icons
+useEqualHeights: true
+theme: dark
+headerStyle: boxed
+language: en
+locale: uk-UA
+target: _blank
+statusStyle: dot
+layout:
+  Bookmarks:
+    style: row
+    header: false
+    iconsOnly: true

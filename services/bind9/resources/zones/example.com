@@ -26,8 +26,8 @@ node-1  IN  A   192.168.0.100
 
 ; ===== Prometheus Exporters
 
-node-exporter.exporters.lab256.dev.  IN  A  192.168.0.2     ; pc-one
-node-exporter.exporters.lab256.dev.  IN  A  192.168.0.100   ; node-1
+node-exporter.exporters.example.com.  IN  A  192.168.0.2     ; pc-one
+node-exporter.exporters.example.com.  IN  A  192.168.0.100   ; node-1
 
 ; ===== Fallback
 

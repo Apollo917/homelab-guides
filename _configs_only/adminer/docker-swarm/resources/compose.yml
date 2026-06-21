@@ -1,0 +1,26 @@
+services:
+  adminer:
+    image: adminer:5.4.2
+    networks:
+      - reverse-proxy # Same network as for Traefik
+      - databases # Same network as for Databases
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == <HOST_NAME>
+      labels:
+        # Traefik integration labels - start
+        - "traefik.enable=true"
+        - "traefik.http.services.adminer.loadBalancer.server.port=8080"
+        - "traefik.http.routers.adminer.service=adminer"
+        - "traefik.http.routers.adminer.tls.certresolver=cloudflare"
+        - "traefik.http.routers.adminer.entrypoints=private-https"
+        - "traefik.http.routers.adminer.rule=Host(`adminer.<DOMAIN_NAME>`)"
+        # Traefik integration labels - end
+networks:
+  reverse-proxy:
+    external: true
+  databases:
+    external: true

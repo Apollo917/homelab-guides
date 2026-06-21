@@ -1,0 +1,59 @@
+services:
+  vaultwarden:
+    image: vaultwarden/server:1.36.0
+    user: <UID>:<GID>
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./data:/data
+    secrets:
+      - vaultwarden_db_url
+      - vaultwarden_admin_token
+    environment:
+      TZ: UTC
+
+      # For more information, see https://github.com/dani-garcia/vaultwarden/blob/main/.env.template
+
+      # e.g. https://vw.example.com
+      DOMAIN: <DOMAIN>
+
+      # Comma-separated list of email addresses allowed to create organizations — leave empty to allow all users
+      ORG_CREATION_USERS: <EMAIL_1>,<EMAIL_2>
+
+      SIGNUPS_ALLOWED: "false"
+      SIGNUPS_VERIFY: "false"
+      EMERGENCY_ACCESS_ALLOWED: "false"
+      EMAIL_CHANGE_ALLOWED: "false"
+      PASSWORD_HINTS_ALLOWED: "false"
+      LOG_LEVEL: warn
+      DATABASE_URL_FILE: /run/secrets/vaultwarden_db_url
+      ADMIN_TOKEN_FILE: /run/secrets/vaultwarden_admin_token
+    networks:
+      - reverse-proxy # Same network as for Traefik
+      - databases # Same network as for Databases
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == <HOST_NAME>
+      labels:
+        # Traefik integration labels - start
+        - "traefik.enable=true"
+        - "traefik.http.services.vaultwarden.loadBalancer.server.port=80"
+        - "traefik.http.routers.vaultwarden.service=vaultwarden"
+        - "traefik.http.routers.vaultwarden.tls.certresolver=cloudflare"
+        - "traefik.http.routers.vaultwarden.entrypoints=private-https"
+        - "traefik.http.routers.vaultwarden.rule=Host(`vw.<DOMAIN_NAME>`)"
+        # Traefik integration labels - end
+
+networks:
+  reverse-proxy:
+    external: true
+  databases:
+    external: true
+
+secrets:
+  vaultwarden_db_url:
+    external: true
+  vaultwarden_admin_token:
+    external: true

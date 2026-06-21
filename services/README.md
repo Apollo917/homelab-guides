@@ -9,4 +9,3 @@ Setup guides for homelab services
 - [IT-TOOLS](it-tools)
 - [Prometheus](prometheus)
 - [Traefik](traefik)
-- [Vaultwarden](vaultwarden)

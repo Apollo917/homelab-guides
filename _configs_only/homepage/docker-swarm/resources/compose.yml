@@ -1,0 +1,48 @@
+services:
+
+  homepage-dockerproxy:
+    image: ghcr.io/tecnativa/docker-socket-proxy:v0.4.2
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro # Mounted as read-only
+    environment:
+      - CONTAINERS=1 # Allow access to viewing containers
+      - SERVICES=1 # Allow access to viewing services (necessary when using Docker Swarm)
+      - TASKS=1 # Allow access to viewing tasks (necessary when using Docker Swarm)
+      - POST=0 # Disallow any POST operations (effectively read-only)
+    networks:
+      - reverse-proxy
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.role == manager
+
+  homepage:
+    image: ghcr.io/gethomepage/homepage:v1.13
+    volumes:
+      - ./config:/app/config
+    environment:
+      PUID: <UID>
+      PGID: <GID>
+      HOMEPAGE_ALLOWED_HOSTS: homepage.<DOMAIN_NAME>
+      LOG_TARGETS: stdout
+    networks:
+      - reverse-proxy
+    deploy:
+      mode: replicated
+      replicas: 1
+      placement:
+        constraints:
+          - node.hostname == <HOST_NAME>
+      labels:
+        # Traefik integration labels - start
+        - "traefik.enable=true"
+        - "traefik.http.services.homepage.loadBalancer.server.port=3000"
+        - "traefik.http.routers.homepage.service=homepage"
+        - "traefik.http.routers.homepage.tls.certresolver=cloudflare"
+        - "traefik.http.routers.homepage.entrypoints=private-https"
+        - "traefik.http.routers.homepage.rule=Host(`homepage.<DOMAIN_NAME>`)"
+networks:
+  reverse-proxy:
+    external: true

@@ -1,0 +1,55 @@
+services:
+  alloy:
+    image: grafana/alloy:v1.17.1
+    user: root
+    command: run --server.http.listen-addr=0.0.0.0:12345 --storage.path=/var/lib/alloy/data /etc/alloy/config.alloy
+    volumes:
+      # Alloy uses it to store its Write-Ahead Log (WAL) and clustered state
+      - alloy-data:/var/lib/alloy/data
+
+      # Exposing the core hardware and OS state to the embedded node_exporter
+      - /:/host/root:ro,rslave
+      - /proc:/host/proc:ro
+      - /sys:/host/sys:ro
+      - /dev/disk:/host/disk:ro
+
+      # Enabling the discovery.docker component and reading container output
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+
+      # Capturing traditional operating system logs (e.g., auth, syslog, kernel logs)
+      - /var/log:/var/log:ro
+
+      # Many monitoring tools use it as a stable host identifier
+      - /etc/machine-id:/etc/machine-id:ro
+
+    configs:
+      - source: alloy_config
+        target: /etc/alloy/config.alloy
+    networks:
+      - reverse-proxy # Same network as for Traefik
+    deploy:
+      mode: global
+      labels:
+        # Traefik integration labels - start
+        - "traefik.enable=true"
+        - "traefik.http.services.alloy.loadBalancer.server.port=12345"
+        - "traefik.http.routers.alloy.service=alloy"
+        - "traefik.http.routers.alloy.tls.certresolver=cloudflare"
+        - "traefik.http.routers.alloy.entrypoints=private-https"
+        - "traefik.http.routers.alloy.rule=Host(`alloy.<DOMAIN_NAME>`)"
+        # Homepage integration labels - start
+        - "homepage.group=Monitoring"
+        - "homepage.name=Grafana Alloy"
+        - "homepage.icon=alloy"
+        - "homepage.href=https://alloy.<DOMAIN_NAME>"
+volumes:
+  alloy-data:
+
+configs:
+  alloy_config:
+    file: ./configs/config.alloy
+
+networks:
+  reverse-proxy:
+    external: true

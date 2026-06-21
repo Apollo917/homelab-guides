@@ -1,0 +1,4 @@
+homepage-swarm:
+  host: homepage-dockerproxy
+  port: 2375
+  swarm: true

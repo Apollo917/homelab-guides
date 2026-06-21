@@ -1,0 +1,5 @@
+// Minimum boilerplate config to pass Swarm validation
+logging {
+  level  = "info"
+  format = "logfmt"
+}

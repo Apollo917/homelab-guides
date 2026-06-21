@@ -38,7 +38,6 @@ comments on configuration parameters and other details**
     - [IT-TOOLS](services/it-tools)
     - [Prometheus](services/prometheus)
     - [Traefik](services/traefik)
-    - [Vaultwarden](services/vaultwarden)
 
 ## Purpose
 
