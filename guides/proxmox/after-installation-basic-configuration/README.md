@@ -55,11 +55,14 @@
     - **Note:** Some NICs hang or drop connections during high-throughput transfers (e.g., large file copies over SMB)
       when used in PCIe passthrough. This is caused by TSO (TCP Segmentation Offload) and GSO (Generic Segmentation
       Offload) incompatibilities in the passthrough context. Disabling these features resolves the issue
-    - **Note:** Replace `eno1` with the actual interface name of your NIC
-    - To resolve this, apply the following fix:
+    - Identify your physical NIC name by `ip link show` command execution
+    - Replace `<NIC_NAME>` with the actual interface name of your NIC (e.g. `nic0`)
+    - To resolve this bug, apply the following fix:
         - Open `/etc/network/interfaces`
-        - Add `post-up ethtool -K eno1 tso off gso off` under `iface eno1 inet manual`
+        - Locate the stanza corresponding to your physical NIC name (e.g., `iface nic0 inet manual`)
+        - Add `post-up ethtool -K <NIC_NAME> tso off gso off` the stanza from the previous step
             - Use a tab offset before adding
+        - Apply the changes live by running `ifreload -a` or rebooting the Proxmox host
 7. Update the root password
     - Execute `passwd`
     - **Note:** This step is optional — skip it if the current password already meets your security requirements
@@ -75,25 +78,15 @@
         - Add permissions to the created user group
         - Assign the users group to the newly created user
         - See [Proxmox VE - User Management](https://youtu.be/frnILOGmATs?si=Vo6SwBF2jyKmAW4J) for a walkthrough
-10. Set OS-level basic security
-    - Since Proxmox is Debian-based, the Ubuntu 24.04 security guide is largely applicable here. See
+10. Set up SSH access
+    - Since Proxmox is Debian-based, the SSH key setup Ubuntu 24.04 security guide is largely applicable here. See
       [Basic Security Setup](../../ubuntu-server-24-04/basic-security-setup/README.md) for reference
-    - **Note:** Skip the non-root user creation step from that guide — it is already covered in this guide. The SSH
-      key setup is covered in the next step. UFW setup is also not required, as Proxmox has its own firewall
-      (covered in step 13)
-11. Add an SSH key for the non-root user
-    - If no SSH key pair exists yet, generate one on the client machine with `ssh-keygen`
-    - Copy the public key to the server with `ssh-copy-id <USERNAME>@<SERVER_IP>`, or manually append it to
-      `~/.ssh/authorized_keys` on the server
-    - Ensure correct permissions on the server:
-        - `chmod 700 ~/.ssh`
-        - `chmod 600 ~/.ssh/authorized_keys`
-12. Set up SSL Certificates
+11. Set up SSL Certificates
     - By default, Proxmox uses a self-signed certificate which causes browser warnings. Setting up a trusted SSL
       certificate eliminates these warnings and secures the web UI with proper HTTPS
     - See [Secure Proxmox with LetsEncrypt HTTPS Certificates Validated with Cloudflare DNS](https://youtu.be/2_PhwHOxytM?si=PEtQS6PFgpw01mHJ)
     for a walkthrough
-13. Set up the Proxmox Firewall
+12. Set up the Proxmox Firewall
     - The Proxmox firewall controls traffic to the host and all VMs/containers, allowing you to restrict access to
       management interfaces and services to trusted networks only
     - To enable and configure it, navigate to `Datacenter > Firewall`
