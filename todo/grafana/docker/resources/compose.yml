@@ -1,7 +1,7 @@
 name: 'grafana'
 services:
   grafana:
-    image: grafana/grafana-oss:12.3
+    image: grafana/grafana-oss:13.0.2
     container_name: grafana
     restart: unless-stopped
     user: ${UID:?error}:${GID:?error}
@@ -14,7 +14,7 @@ services:
       - "traefik.enable=true"
       - "traefik.http.services.grafana.loadBalancer.server.port=3000"
       - "traefik.http.routers.grafana.service=grafana"
-      - "traefik.http.routers.grafana.tls=true"
+      - "traefik.http.routers.grafana.tls.certresolver=cloudflare"
       - "traefik.http.routers.grafana.entrypoints=private-https"
       - "traefik.http.routers.grafana.rule=Host(`grafana.${DOMAIN_NAME:?error}`)"
       # Traefik integration labels - end

@@ -35,7 +35,6 @@ comments on configuration parameters and other details**
 - [Services setup guides](services)
     - [Bind9](services/bind9)
     - [Gitea](services/gitea)
-    - [Grafana](services/grafana)
     - [IT-TOOLS](services/it-tools)
     - [Prometheus](services/prometheus)
     - [Traefik](services/traefik)

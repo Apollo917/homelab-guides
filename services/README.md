@@ -6,7 +6,6 @@ Setup guides for homelab services
 
 - [Bind9](bind9)
 - [Gitea](gitea)
-- [Grafana](grafana)
 - [IT-TOOLS](it-tools)
 - [Prometheus](prometheus)
 - [Traefik](traefik)
