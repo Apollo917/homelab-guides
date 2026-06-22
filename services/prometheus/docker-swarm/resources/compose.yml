@@ -8,21 +8,21 @@ services:
       - ./data:/prometheus
     networks:
       - reverse-proxy
-    labels:
-      # Traefik integration labels - start
-      - "traefik.enable=true"
-      - "traefik.http.services.prometheus.loadBalancer.server.port=9090"
-      - "traefik.http.routers.prometheus.service=prometheus"
-      - "traefik.http.routers.prometheus.tls.certresolver=cloudflare"
-      - "traefik.http.routers.prometheus.entrypoints=private-https"
-      - "traefik.http.routers.prometheus.rule=Host(`prometheus.<DOMAIN_NAME>`)"
-      # Traefik integration labels - end
     deploy:
       mode: replicated
       replicas: 1
       placement:
         constraints:
           - node.hostname == <HOST_NAME>
+      labels:
+        # Traefik integration labels - start
+        - "traefik.enable=true"
+        - "traefik.http.services.prometheus.loadBalancer.server.port=9090"
+        - "traefik.http.routers.prometheus.service=prometheus"
+        - "traefik.http.routers.prometheus.tls.certresolver=cloudflare"
+        - "traefik.http.routers.prometheus.entrypoints=private-https"
+        - "traefik.http.routers.prometheus.rule=Host(`prometheus.<DOMAIN_NAME>`)"
+        # Traefik integration labels - end
 networks:
   reverse-proxy:
     external: true
