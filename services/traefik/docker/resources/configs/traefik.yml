@@ -7,6 +7,9 @@ api:
   insecure: false
 
 entryPoints:
+  # (Optional) In case Prometheus metrics are enabled
+  metrics:
+    address: :8082
   private-http:
     address: :80
     http:
@@ -75,3 +78,8 @@ certificatesResolvers:
 # Traefik will write logs to stdout by default
 log:
   level: WARN
+
+# (Optional) Enables Prometheus metrics
+metrics:
+  prometheus:
+    entrypoint: metrics
