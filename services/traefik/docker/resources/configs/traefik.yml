@@ -14,6 +14,7 @@ entryPoints:
         entryPoint:
           to: private-https
           scheme: https
+          permanent: true
   private-https:
     address: :443
     http:

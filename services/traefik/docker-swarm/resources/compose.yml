@@ -29,7 +29,7 @@ services:
       replicas: 1
       placement:
         constraints:
-          - node.hostname == <HOST_NAME>
+          - node.role == manager
 networks:
   reverse-proxy:
     external: true
