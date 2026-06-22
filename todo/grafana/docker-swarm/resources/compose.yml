@@ -6,21 +6,21 @@ services:
       - ./data:/var/lib/grafana
     networks:
       - reverse-proxy
-    labels:
-      # Traefik integration labels - start
-      - "traefik.enable=true"
-      - "traefik.http.services.grafana.loadBalancer.server.port=3000"
-      - "traefik.http.routers.grafana.service=grafana"
-      - "traefik.http.routers.grafana.tls.certresolver=cloudflare"
-      - "traefik.http.routers.grafana.entrypoints=private-https"
-      - "traefik.http.routers.grafana.rule=Host(`grafana.<DOMAIN_NAME>`)"
-      # Traefik integration labels - end
     deploy:
       mode: replicated
       replicas: 1
       placement:
         constraints:
           - node.hostname == <HOST_NAME>
+      labels:
+        # Traefik integration labels - start
+        - "traefik.enable=true"
+        - "traefik.http.services.grafana.loadBalancer.server.port=3000"
+        - "traefik.http.routers.grafana.service=grafana"
+        - "traefik.http.routers.grafana.tls.certresolver=cloudflare"
+        - "traefik.http.routers.grafana.entrypoints=private-https"
+        - "traefik.http.routers.grafana.rule=Host(`grafana.<DOMAIN_NAME>`)"
+        # Traefik integration labels - end
 networks:
   reverse-proxy:
     external: true
