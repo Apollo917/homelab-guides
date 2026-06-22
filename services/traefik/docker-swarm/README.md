@@ -26,7 +26,6 @@
 7. Set [compose.yml](./resources/compose.yml) file property values
     - **<DOMAIN_NAME>**: the base domain name (e.g. example.com) — used to route traffic and issue TLS certificates for
       services under this domain. Traefik will be accessible at traefik.<DOMAIN_NAME>
-    - **<HOST_NAME>**: the host name of your Swarm node
 8. Update the `<CLOUDFLARE_ACCOUNT_EMAIL_ADDRESS>` value in the [traefik.yml](./resources/configs/traefik.yml) file
 9. Adjust the Traefik configuration if needed
     - Traefik Docker image version
@@ -55,3 +54,9 @@
 16. Verify the deployment
     - Check the service is running: `docker service ls`
     - Open `https://traefik.<DOMAIN_NAME>` in your browser
+
+## Materials
+
+### Docs
+
+- [Traefik Swarm Setup](https://doc.traefik.io/traefik/setup/swarm/)
