@@ -10,3 +10,11 @@ scrape_configs:
         type: A
         port: 9100
         refresh_interval: "10m"
+  - job_name: traefik
+    scrape_interval: 30s
+    dns_sd_configs:
+      - names:
+          - "traefik"
+        type: A
+        port: 8082
+        refresh_interval: "10m"
